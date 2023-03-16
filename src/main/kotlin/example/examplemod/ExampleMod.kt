@@ -24,12 +24,12 @@ object ExampleMod {
 
     // the logger for our mod
     val LOGGER: Logger = LogManager.getLogger(ID)
-
+    val REGISTRATE = MyRegistrate()
     init {
         LOGGER.log(Level.INFO, "Hello world!")
-
+        REGISTRATE.registerEventListeners(MOD_BUS)
         // Register the KDeferredRegister to the mod-specific event bus
-        ModBlocks.REGISTRY.register(MOD_BUS)
+        ModBlocks.register()
 
         val obj = runForDist(
             clientTarget = {
